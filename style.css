@@ -1,0 +1,442 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #10131c;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 30px;
+    border-bottom: 1px solid #303746;
+}
+
+header h1 {
+    margin: 0;
+    color: #8b9cff;
+}
+
+header p {
+    color: #aab1c0;
+}
+
+main {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.upload-card {
+    background: #1b2130;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #303746;
+}
+
+.upload-card h2 {
+    font-size: 28px;
+}
+
+.upload-card p {
+    color: #aab1c0;
+}
+
+.upload-button {
+    display: inline-block;
+    background: #687cff;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.upload-button:hover {
+    background: #8292ff;
+}
+
+#fileInput {
+    display: none;
+}
+
+#fileName {
+    margin-top: 25px;
+}
+
+#preview {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+#preview table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#preview th,
+#preview td {
+    padding: 12px;
+    border: 1px solid #40495c;
+    text-align: left;
+}
+
+#preview th {
+    background: #303b55;
+}
+
+#preview td {
+    background: #222b3d;
+}
+.issue {
+    background: #35252b;
+    border: 1px solid #a94b5c;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.issue strong {
+    color: #ff788b;
+}
+
+.issue p {
+    color: #ffffff;
+}
+td {
+    white-space: pre-wrap;
+}
+.error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+/* 翻訳漏れ：赤 */
+.issue.missing {
+    border: 2px solid #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.08);
+}
+
+.issue.missing strong {
+    color: #ff4d4d;
+}
+
+/* 変数の不一致：オレンジ */
+.issue.mismatch {
+    border: 2px solid #ffa500;
+    background-color: rgba(255, 165, 0, 0.08);
+}
+
+.issue.mismatch strong {
+    color: #ffa500;
+}
+/* 分析結果の件数表示 */
+.issue-summary {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.issue-summary p {
+    flex: 1;
+    padding: 18px 10px;
+    margin: 0;
+    border-radius: 10px;
+    background: #252d40;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* 翻訳漏れ：赤 */
+.issue-summary p:nth-child(1) {
+    border: 1px solid #ff4d4d;
+    color: #ff6b6b;
+}
+
+/* 変数不一致：オレンジ */
+.issue-summary p:nth-child(2) {
+    border: 1px solid #ffa500;
+    color: #ffb347;
+}
+
+/* 文字数オーバー：黄色 */
+.issue-summary p:nth-child(3) {
+    border: 1px solid #ffd43b;
+    color: #ffd43b;
+}
+/* 文字数制限の設定 */
+.settings {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings label {
+    color: #aab1c0;
+    font-size: 14px;
+}
+
+.settings input {
+    width: 120px;
+    padding: 10px;
+    background: #252d40;
+    color: white;
+    border: 1px solid #687cff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+}
+.length-details {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.length-details div {
+    flex: 1;
+    min-width: 0;
+    background: #252d40;
+    border-radius: 8px;
+    padding: 12px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.length-details span {
+    color: #aab1c0;
+    font-size: 12px;
+}
+
+.length-details strong {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.length-details div:last-child strong {
+    color: #ffd43b;
+}
+/* 文字数オーバー：黄色 */
+.issue.too-long {
+    border: 2px solid #ffd43b;
+    background-color: rgba(255, 212, 59, 0.08);
+}
+
+.issue.too-long > strong {
+    color: #ffd43b;
+}
+/* 使い方ガイド */
+.guide-card {
+    margin-top: 30px;
+    background: #1b2130;
+    padding: 30px;
+    border: 1px solid #303746;
+    border-radius: 16px;
+}
+
+.guide-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.guide-step {
+    background: #252d40;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.guide-step h3 {
+    color: #8b9cff;
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.guide-step p {
+    color: #aab1c0;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+/* How to Use */
+.guide-card {
+    margin-top: 30px;
+    background: #1b2130;
+    padding: 30px;
+    border: 1px solid #303746;
+    border-radius: 16px;
+}
+
+.guide-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.guide-step {
+    background: #252d40;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.guide-step h3 {
+    color: #8b9cff;
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.guide-step p {
+    color: #aab1c0;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+/* サンプルCSVダウンロードボタン */
+.sample-button {
+    display: block;
+    width: fit-content;
+    margin: 15px auto;
+    color: #aab8ff;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.sample-button:hover {
+    color: #ffffff;
+}
+/* Supported Checks */
+.checks-card {
+    margin-top: 30px;
+    background: #1b2130;
+    padding: 30px;
+    border: 1px solid #303746;
+    border-radius: 16px;
+}
+
+.checks-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.check-item {
+    background: #252d40;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.check-item h3 {
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.check-item p {
+    color: #aab1c0;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* チェックの種類ごとの色 */
+.check-missing {
+    color: #ff6b6b;
+}
+
+.check-mismatch {
+    color: #ffa500;
+}
+
+.check-length {
+    color: #ffd43b;
+}
+
+/* =========================
+   Mobile Responsive Design
+   ========================= */
+
+@media (max-width: 600px) {
+
+    /* ページ全体 */
+    header {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    main {
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    /* アップロード画面 */
+    .upload-card {
+        padding: 25px 15px;
+    }
+
+    .upload-card h2 {
+        font-size: 22px;
+    }
+
+    .upload-button {
+        padding: 14px 20px;
+        max-width: 100%;
+    }
+
+    /* How to Use */
+    .guide-card {
+        padding: 20px 15px;
+    }
+
+    .guide-step {
+        padding: 15px;
+    }
+
+    /* Supported Checks */
+    .checks-card {
+        padding: 20px 15px;
+    }
+
+    .check-item {
+        padding: 15px;
+    }
+
+    /* 分析結果の件数 */
+    .issue-summary {
+        flex-direction: column;
+    }
+
+    .issue-summary p {
+        width: 100%;
+    }
+
+    /* 文字数チェックの詳細 */
+    .length-details {
+        gap: 6px;
+    }
+
+    .length-details div {
+        padding: 10px 4px;
+    }
+
+    .length-details strong {
+        font-size: 16px;
+    }
+
+    /* CSVテーブル */
+    #preview {
+        overflow-x: auto;
+    }
+
+    #preview th,
+    #preview td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+}

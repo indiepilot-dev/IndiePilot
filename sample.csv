@@ -1,0 +1,5 @@
+key,English,Japanese
+start,Start,開始
+save,Save,保存
+exit,Exit,終了
+welcome,Welcome {player_name}!,ようこそ {player_name}！
