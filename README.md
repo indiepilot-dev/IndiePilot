@@ -12,8 +12,11 @@ Quickly identify missing translations, inconsistent variables, and text that exc
 
 No account or installation required.
 
-## Why IndiePilot?
+## Screenshot
 
+![IndiePilot Localization Checker](indiepilot-demo.png)
+
+## Why IndiePilot?
 Localization mistakes can cause confusing dialogue, broken placeholders, and text that doesn't fit your game's interface.
 
 IndiePilot helps you spot common problems early, so you can spend less time manually reviewing CSV files.
