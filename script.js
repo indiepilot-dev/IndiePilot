@@ -51,6 +51,7 @@ const fileInput = document.getElementById("fileInput");
 const fileName = document.getElementById("fileName");
 const preview = document.getElementById("preview");
 const maxLengthInput = document.getElementById("maxLength");
+let cachedCSVData = null;
 
 // Display an error without interpreting file content as HTML.
 function showError(message) {
@@ -67,6 +68,8 @@ fileInput.addEventListener("change", async function () {
     const file = fileInput.files[0];
     if (!file) return;
 
+    cachedCSVData = null;
+
     // Limit uploaded files to 5 MB.
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
@@ -74,7 +77,7 @@ if (file.size > MAX_FILE_SIZE) {
     showError("File Too Large: Please select a CSV file smaller than 5 MB.");
     return;
 }
-    
+
     fileName.textContent = "Selected: " + file.name;
 
     let text;
@@ -90,10 +93,12 @@ if (file.size > MAX_FILE_SIZE) {
         return;
     }
 
-    let data;
+        let data;
     try {
         data = parseCSV(text);
+        cachedCSVData = data;
     } catch (error) {
+        cachedCSVData = null;
         showError(error.message);
         return;
     }
@@ -123,12 +128,17 @@ if (file.size > MAX_FILE_SIZE) {
         }
     }
 
+        analyzeCSV(data);
+    });
+
+    function analyzeCSV(data) {
     const MAX_LENGTH = Number(maxLengthInput.value);
+
     if (!Number.isInteger(MAX_LENGTH) || MAX_LENGTH < 1) {
         showError("Invalid character limit. Please enter a whole number greater than 0.");
         return;
     }
-
+    preview.classList.remove("error-message");
     // Render the table using textContent to avoid HTML injection.
     preview.replaceChildren();
     const table = document.createElement("table");
@@ -326,10 +336,11 @@ if (file.size > MAX_FILE_SIZE) {
         link.click();
         URL.revokeObjectURL(url);
     });
-});
+}
 
-// Reanalyze the selected file when the character limit changes.
+// Reanalyze cached CSV data when the character limit changes.
 maxLengthInput.addEventListener("input", function () {
-    if (fileInput.files.length === 0) return;
-    fileInput.dispatchEvent(new Event("change"));
+    if (cachedCSVData === null) return;
+
+    analyzeCSV(cachedCSVData);
 });
