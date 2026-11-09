@@ -440,3 +440,40 @@ td {
     }
 
 }
+/* Feedback Section */
+
+.feedback-section {
+    background: #1e2433;
+    border: 1px solid #303a50;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.feedback-section h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.feedback-section p {
+    color: #b8c4e0;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.feedback-section a {
+    display: inline-block;
+    background: #6578ff;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.feedback-section a:hover {
+    background: #8190ff;
+}
