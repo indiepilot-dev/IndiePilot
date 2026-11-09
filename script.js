@@ -67,6 +67,14 @@ fileInput.addEventListener("change", async function () {
     const file = fileInput.files[0];
     if (!file) return;
 
+    // Limit uploaded files to 5 MB.
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+if (file.size > MAX_FILE_SIZE) {
+    showError("File Too Large: Please select a CSV file smaller than 5 MB.");
+    return;
+}
+    
     fileName.textContent = "Selected: " + file.name;
 
     let text;
